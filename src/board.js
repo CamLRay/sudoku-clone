@@ -9,3 +9,16 @@ export function Board(row1, row2, row3, row4, row5, row6, row7, row8, row9) {
   this.row8 = row8;
   this.row9 = row9;
 }
+
+Board.prototype.compareColumns = function() {
+  let array =[];
+  const board = this;
+  for (let i = 1; i <= 9; i++) {
+    if (array.includes(board["row" + i ][0])){
+      return false;
+    } else {
+      array.push(board["row" + i ][0]);
+    } 
+  }
+  return true;
+};
