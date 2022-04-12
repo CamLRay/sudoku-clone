@@ -11,14 +11,31 @@ export function Board(row1, row2, row3, row4, row5, row6, row7, row8, row9) {
 }
 
 Board.prototype.compareColumns = function() {
-  let array =[];
   const board = this;
-  for (let i = 1; i <= 9; i++) {
-    if (array.includes(board["row" + i ][0])){
-      return false;
-    } else {
-      array.push(board["row" + i ][0]);
-    } 
+  for (let index = 0; index < 9; index++) {
+    let array =[];
+    for (let i = 1; i <= 9; i++) {
+      if ((parseInt(board["row" + i ][index]) > 9) ||(parseInt(board["row" + i ][index]) < 1)) {
+        return false;
+      } else if (array.includes(board["row" + i ][index])){
+        return false;
+      } else {
+        array.push(board["row" + i ][index]);
+      } 
+    }
+  }
+  return true;
+};
+
+
+Board.prototype.compareRows = function() {
+  const board = this;
+  for(let i = 1; i <= 9; i++) {
+    for(let index = 1; index <= 9; index++){
+      if(!board["row"+ i].includes(index)) {
+        return false;
+      }
+    }
   }
   return true;
 };
